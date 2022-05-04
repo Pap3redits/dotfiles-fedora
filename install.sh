@@ -21,20 +21,11 @@ sudo dnf install \
 	  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 echo
 echo "################################################################################################"
-echo "#################################    Installing Brave Browser   ################################"
-echo "################################################################################################"
-echo 
-
-sudo dnf install dnf-plugins-core
-sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-sudo dnf install brave-browser
-
-echo
-echo "################################################################################################"
 echo "#################################    Installing Required Packages   ############################"
 echo "################################################################################################"
 echo 
+
+sleep 2
 
 sudo dnf install $(cat packages|xargs)
 sudo systemctl enable sddm
@@ -46,5 +37,16 @@ echo "##########################################################################
 echo
 
 chsh -s /usr/bin/fish
+
+echo
+echo "################################################################################################"
+echo "#################################    Installing Brave Browser   ################################"
+echo "################################################################################################"
+echo 
+
+sudo dnf install dnf-plugins-core
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+sudo dnf install brave-browser
 
 

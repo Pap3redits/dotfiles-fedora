@@ -27,7 +27,7 @@ echo
 
 sleep 2
 
-sudo dnf install $(cat packages|xargs)
+sudo dnf -y install $(cat packages|xargs)
 sudo systemctl enable sddm
 
 echo

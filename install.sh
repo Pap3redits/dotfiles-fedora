@@ -3,6 +3,7 @@
 
 cp -r .config ~/.config
 sudo chmod +x ~/.config/awesome/noobie/filesystem.sh ~/.config/awesome/noobie/memory.sh
+sudo cp dnf.conf /etc/dnf/dnf.conf
 
 mkdir ~/Documents ~/Pictures ~/Downloads
 
@@ -25,7 +26,7 @@ echo "#################################    Installing Required Packages   ######
 echo "################################################################################################"
 echo 
 
-sleep 2
+sleep 1
 
 sudo dnf -y install $(cat packages|xargs)
 sudo systemctl enable sddm
@@ -49,4 +50,13 @@ sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.co
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf install brave-browser
 
+echo
+echo "################################################################################################"
+echo "#################################    Installing Doom Emacs   ################################"
+echo "################################################################################################"
+echo
 
+cd
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+cd ~/.emacs.d/bin
+./doom install

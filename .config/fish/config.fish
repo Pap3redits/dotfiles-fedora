@@ -23,7 +23,7 @@ if status is-interactive
 
     alias sys='sudo systemctl'
     
-    alias sinstall 'sudo dnf -y install'
+    alias sinstall 'sudo dnf install'
     alias update 'sudo dnf -y update'
 
     starship init fish | source
